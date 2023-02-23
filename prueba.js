@@ -1,7 +1,7 @@
 console.log("Ingreso JS");
 
 const ethereumButton = document.querySelector('.enableEthereumButton');
-
+// Evento clic para ejecutar alerta
 ethereumButton.addEventListener('click', () => {
    // var btn = document.getElementById("eth-btn");
    if(window.ethereum.selectedAddress != null){

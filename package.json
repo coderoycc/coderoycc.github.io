@@ -1,0 +1,21 @@
+{
+  "name": "portfolio-dense-dark",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxtjs/google-fonts": "^3.2.0",
+    "@vueuse/motion": "^2.2.3",
+    "nuxt": "^3.12.3",
+    "typescript": "^7.0.2",
+    "vue": "^3.4.31",
+    "vue-router": "^4.4.0",
+    "vue-tsc": "^3.3.7"
+  }
+}

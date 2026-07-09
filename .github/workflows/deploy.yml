@@ -1,0 +1,55 @@
+# Workflow optimizado para compilar y desplegar Nuxt 3 (SSG) en GitHub Pages usando Node.js 22 LTS
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  # Permite ejecutar este workflow manualmente desde la pestaña Actions de GitHub
+  workflow_dispatch:
+
+# Configura los permisos de GITHUB_TOKEN necesarios para GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Permite solo una ejecución de implementación activa a la vez para evitar conflictos
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (22 LTS)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Generate Static Site (SSG)
+        run: npm run generate
+
+      - name: Setup Pages Configuration
+        uses: actions/configure-pages@v5
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Directorio de salida estática por defecto en Nuxt 3 para SSG
+          path: ./.output/public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

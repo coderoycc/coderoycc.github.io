@@ -1,0 +1,71 @@
+/* ═══════════════════════════════════════════════════════
+   DESIGN TOKENS — "Dense Dark" Portfolio
+   Fuente única de verdad para todo el sistema de diseño.
+   ═══════════════════════════════════════════════════════ */
+:root {
+
+  /* ── SUPERFICIES ── */
+  --color-surface-base:    #0A0A0F;
+  --color-surface-level1:  #10101A;
+  --color-surface-level2:  #181826;
+  --color-surface-overlay-header:      rgba(10, 10, 15, 0.82);
+  --color-surface-overlay-menu-mobile: rgba(10, 10, 15, 0.96);
+
+  /* ── ACENTOS ── */
+  --color-accent-blue:       #4D7CFE;
+  --color-accent-blue-10:    rgba(77, 124, 254, 0.10);
+  --color-accent-blue-08:    rgba(77, 124, 254, 0.08);
+  --color-accent-blue-06:    rgba(77, 124, 254, 0.06);
+  --color-accent-blue-05:    rgba(77, 124, 254, 0.05);
+  --color-accent-blue-20:    rgba(77, 124, 254, 0.20);
+  --color-accent-blue-30:    rgba(77, 124, 254, 0.30);
+  --color-accent-blue-35:    rgba(77, 124, 254, 0.35);
+  --color-accent-blue-40:    rgba(77, 124, 254, 0.40);
+  --color-accent-green:      #4ade80;
+
+  /* ── BORDES ── */
+  --color-border:            #1E1E30;
+
+  /* ── TEXTO ── */
+  --color-text-primary:    #EEEAF8;
+  --color-text-secondary:  #9896B0;
+  --color-text-muted:      #52506A;
+
+  /* ── TIPOGRAFÍA ── */
+  --font-family-display:  'Syne', sans-serif;
+  --font-family-mono:     'IBM Plex Mono', monospace;
+
+  /* ── RADIOS ── */
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --radius-lg:   8px;
+  --radius-full: 100px;
+
+  /* ── SPACING ── */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  100px;
+
+  /* ── SOMBRAS / GLOW ── */
+  --shadow-glow-blue:  0 0 12px var(--color-accent-blue), 0 0 24px var(--color-accent-blue-40);
+  --shadow-glow-blue-sm: 0 0 8px var(--color-accent-blue);
+  --shadow-glow-green: 0 0 6px var(--color-accent-green);
+
+  /* ── TRANSICIONES ── */
+  --transition-fast:   all 0.2s ease;
+  --transition-normal: all 0.3s ease;
+
+  /* ── LAYOUT ── */
+  --container-max-width: 1200px;
+  --container-padding-x: 24px;
+  --header-height: 72px;
+}

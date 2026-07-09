@@ -1,0 +1,38 @@
+# Nuxt 3 / Node.js
+node_modules/
+.nuxt/
+.output/
+dist/
+.temp/
+.cache/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Variables de entorno / Secretos
+.env
+.env.*
+!.env.example
+
+# IDE / Editores
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Extras
+KEYS.md
+PORTFOLIO*.md

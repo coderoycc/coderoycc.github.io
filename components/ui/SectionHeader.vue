@@ -13,22 +13,22 @@ defineProps<{ number: string, title: string }>()
 .section-header {
   display: flex;
   align-items: baseline;
-  gap: 12px;
-  margin-bottom: 48px;
+  gap: var(--space-3);
+  margin-bottom: var(--section-header-mb);
   border-bottom: 1px solid var(--color-border);
-  padding-bottom: 16px;
+  padding-bottom: var(--space-4);
 }
 
 .section-header__number {
   font-family: var(--font-family-mono);
-  font-size: 14px;
+  font-size: var(--text-lg);
   color: var(--color-accent-blue);
   font-weight: 600;
 }
 
 .section-header__title {
   font-family: var(--font-family-display);
-  font-size: 24px;
+  font-size: var(--text-heading-section);
   font-weight: 700;
   color: var(--color-text-primary);
   text-transform: uppercase;

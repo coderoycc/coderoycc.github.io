@@ -11,22 +11,19 @@
           LET'S BUILD<br />SOMETHING.
         </h3>
 
-        <a href="mailto:roberto@coderoycc.com" class="contact__email-pill">
-          <span class="contact__email-icon" aria-hidden="true">👋</span>
-          roberto@coderoycc.com
+        <a :href="'mailto:' + profile.email" class="contact__email-pill">
+          <span class="status-dot status-dot--green"></span>
+          {{ profile.email }}
         </a>
       </div>
 
       <!-- Redes sociales (usa .social-link global de main.css) -->
       <nav class="contact__social" aria-label="Redes sociales">
-        <a href="#" class="contact__social-item">
+        <a :href="profile.github" target="_blank" rel="noopener noreferrer" class="contact__social-item">
           <span class="contact__dash" aria-hidden="true">—</span> GITHUB
         </a>
-        <a href="#" class="contact__social-item">
+        <a :href="profile.linkedin" target="_blank" rel="noopener noreferrer" class="contact__social-item">
           <span class="contact__dash" aria-hidden="true">—</span> LINKEDIN
-        </a>
-        <a href="#" class="contact__social-item">
-          <span class="contact__dash" aria-hidden="true">—</span> TWITTER/X
         </a>
       </nav>
 
@@ -36,6 +33,10 @@
 
 <script setup lang="ts">
 import SectionHeader from '~/components/ui/SectionHeader.vue';
+import { usePortfolioData } from '~/composables/usePortfolioData';
+
+const { getProfile } = usePortfolioData();
+const profile = getProfile();
 </script>
 
 <style scoped>
@@ -58,7 +59,7 @@ import SectionHeader from '~/components/ui/SectionHeader.vue';
 
 .contact__headline {
   font-family: var(--font-family-display);
-  font-size: clamp(32px, 6vw, 72px);
+  font-size: var(--text-heading-contact);
   font-weight: 800;
   line-height: 1.1;
   color: var(--color-text-primary);
@@ -72,9 +73,9 @@ import SectionHeader from '~/components/ui/SectionHeader.vue';
   align-items: center;
   gap: var(--space-4);
   font-family: var(--font-family-mono);
-  font-size: clamp(13px, 2vw, 16px);
+  font-size: clamp(var(--text-md), 2vw, var(--text-xl));
   color: var(--color-accent-blue);
-  padding: 14px 32px;
+  padding: var(--space-lg, 14px) var(--space-8);
   border: 1px solid var(--color-accent-blue);
   border-radius: var(--radius-full);
   background-color: var(--color-accent-blue-05);
@@ -105,7 +106,7 @@ import SectionHeader from '~/components/ui/SectionHeader.vue';
 
 .contact__social-item {
   font-family: var(--font-family-mono);
-  font-size: 14px;
+  font-size: var(--text-lg);
   color: var(--color-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -139,17 +140,17 @@ import SectionHeader from '~/components/ui/SectionHeader.vue';
 
 @media (max-width: 480px) {
   .contact__email-pill {
-    padding: 12px 20px;
+    padding: var(--space-3) var(--space-5);
     text-align: center;
     width: 100%;
     justify-content: center;
-    font-size: 12px;
+    font-size: var(--text-base);
   }
   .contact__social {
-    gap: var(--space-6);
+    gap: var(--space-4);
   }
   .contact__social-item {
-    font-size: 12px;
+    font-size: var(--text-base);
   }
 }
 </style>

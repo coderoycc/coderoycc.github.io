@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AppHeader from '~/components/layout/AppHeader.vue';
 import AppFooter from '~/components/layout/AppFooter.vue';
+import ScrollToTop from '~/components/ui/ScrollToTop.vue';
 </script>
 <template>
   <div class="layout-default">
@@ -9,6 +10,7 @@ import AppFooter from '~/components/layout/AppFooter.vue';
       <slot />
     </main>
     <AppFooter />
+    <ScrollToTop />
   </div>
 </template>
 <style scoped>
@@ -16,6 +18,7 @@ import AppFooter from '~/components/layout/AppFooter.vue';
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 .main-content {

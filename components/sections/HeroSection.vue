@@ -5,7 +5,7 @@
       <!-- Badge de disponibilidad (usa .badge global) -->
       <div class="badge hero__badge">
         <span class="status-dot status-dot--blue"></span>
-        DISPONIBLE PARA NUEVOS PROYECTOS
+        DISPONIBLE PARA NUEVOS PROYECTOS ({{ profile.availability }})
       </div>
 
       <!-- Saludo -->
@@ -13,20 +13,20 @@
 
       <!-- Título principal -->
       <h1 class="hero__title">
-        <span class="hero__title-accent">ROBERTO CARLOS</span><br />
-        CHAMBI CALIZAYA
+        <span class="hero__title-accent">{{ profile.name.toUpperCase() }}</span><br />
+        {{ profile.lastName.toUpperCase() }}
       </h1>
 
       <!-- Rol / descripción -->
       <p class="hero__subtitle">
-        INGENIERO DE SOFTWARE · FULLSTACK &amp; DEVOPS · DISEÑANDO SISTEMAS
+        {{ profile.title.toUpperCase() }} · DISEÑANDO SISTEMAS
         ESCALABLES CON PRECISIÓN TÉCNICA Y RIGOR ARQUITECTÓNICO.
       </p>
 
       <!-- Métricas -->
       <div class="hero__metrics">
         <div class="hero__metric">
-          <span class="hero__metric-value">5<span class="hero__metric-plus">+</span></span>
+          <span class="hero__metric-value">3<span class="hero__metric-plus">+</span></span>
           <span class="hero__metric-label">AÑOS DE EXPERIENCIA</span>
         </div>
         <div class="hero__metric-sep" aria-hidden="true"></div>
@@ -44,7 +44,7 @@
           <span class="hero__tag">Node.js / NestJS</span>
           <span class="hero__tag">PostgreSQL</span>
           <span class="hero__tag">Docker / K8s</span>
-          <span class="hero__tag">AWS / GCP</span>
+          <span class="hero__tag">AWS / Cloud</span>
           <span class="hero__tag">TypeScript</span>
         </div>
       </div>
@@ -64,6 +64,10 @@
 
 <script setup lang="ts">
 import BaseButton from '~/components/ui/BaseButton.vue';
+import { usePortfolioData } from '~/composables/usePortfolioData';
+
+const { getProfile } = usePortfolioData();
+const profile = getProfile();
 </script>
 
 <style scoped>
@@ -88,7 +92,7 @@ import BaseButton from '~/components/ui/BaseButton.vue';
 /* ── GREETING ── */
 .hero__greeting {
   font-family: var(--font-family-mono);
-  font-size: 16px;
+  font-size: var(--text-xl);
   color: var(--color-text-secondary);
   margin-bottom: var(--space-3);
   text-transform: uppercase;
@@ -98,7 +102,7 @@ import BaseButton from '~/components/ui/BaseButton.vue';
 /* ── TÍTULO ── */
 .hero__title {
   font-family: var(--font-family-display);
-  font-size: clamp(36px, 6vw, 72px);
+  font-size: var(--text-heading-hero);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.01em;
@@ -114,13 +118,14 @@ import BaseButton from '~/components/ui/BaseButton.vue';
 /* ── SUBTÍTULO ── */
 .hero__subtitle {
   font-family: var(--font-family-mono);
-  font-size: clamp(12px, 1.5vw, 15px);
+  font-size: clamp(var(--text-base), 1.5vw, 15px);
   line-height: 1.7;
   color: var(--color-text-secondary);
   max-width: 680px;
   margin-bottom: var(--space-12);
   text-transform: uppercase;
   letter-spacing: 0.02em;
+  overflow-wrap: break-word;
 }
 
 /* ── MÉTRICAS ── */
@@ -140,7 +145,7 @@ import BaseButton from '~/components/ui/BaseButton.vue';
 
 .hero__metric-value {
   font-family: var(--font-family-display);
-  font-size: clamp(26px, 4vw, 40px);
+  font-size: var(--text-heading-metric);
   font-weight: 900;
   color: var(--color-text-primary);
   line-height: 1;
@@ -156,7 +161,7 @@ import BaseButton from '~/components/ui/BaseButton.vue';
 
 .hero__metric-label {
   font-family: var(--font-family-mono);
-  font-size: 10px;
+  font-size: var(--text-xs);
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -181,7 +186,7 @@ import BaseButton from '~/components/ui/BaseButton.vue';
 
 .hero__stack-label {
   font-family: var(--font-family-mono);
-  font-size: 11px;
+  font-size: var(--text-sm);
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -198,12 +203,12 @@ import BaseButton from '~/components/ui/BaseButton.vue';
 
 .hero__tag {
   font-family: var(--font-family-mono);
-  font-size: 11px;
+  font-size: var(--text-sm);
   color: var(--color-text-secondary);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: 4px 10px;
+  padding: var(--space-1) var(--space-3);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   transition: var(--transition-fast);
@@ -260,11 +265,7 @@ import BaseButton from '~/components/ui/BaseButton.vue';
     width: 100%;
   }
   .hero__greeting {
-    font-size: 13px;
-  }
-  .hero__badge {
-    font-size: 10px;
-    padding: 5px 12px;
+    font-size: var(--text-md);
   }
   .hero__subtitle {
     margin-bottom: var(--space-8);

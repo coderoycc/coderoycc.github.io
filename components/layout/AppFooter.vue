@@ -21,10 +21,10 @@
         <!-- Derecha: links + copyright -->
         <div class="app-footer__right">
           <nav class="app-footer__social" aria-label="Redes sociales">
-            <a href="https://github.com"   target="_blank" rel="noopener noreferrer" class="social-link">
+            <a :href="profile.github"   target="_blank" rel="noopener noreferrer" class="social-link">
               <span aria-hidden="true">⌥</span> GitHub
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">
+            <a :href="profile.linkedin" target="_blank" rel="noopener noreferrer" class="social-link">
               <span aria-hidden="true">⌗</span> LinkedIn
             </a>
             <a href="#contacto" class="social-link">
@@ -41,6 +41,13 @@
     </div>
   </footer>
 </template>
+
+<script setup lang="ts">
+import { usePortfolioData } from '~/composables/usePortfolioData';
+
+const { getProfile } = usePortfolioData();
+const profile = getProfile();
+</script>
 
 <style scoped>
 /* ── SEPARADOR ── */
@@ -114,7 +121,7 @@
 /* ── COPYRIGHT ── */
 .app-footer__copyright {
   font-family: var(--font-family-mono);
-  font-size: 10px;
+  font-size: var(--text-xs);
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;

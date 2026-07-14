@@ -11,10 +11,10 @@
 
       <!-- Navegación central -->
       <nav class="app-header__nav" aria-label="Navegación principal">
-        <a href="#stack"      class="app-header__link">Stack</a>
-        <a href="#proyectos"  class="app-header__link">Proyectos</a>
-        <a href="#sobre-mi"   class="app-header__link">Sobre mí</a>
-        <a href="#contacto"   class="app-header__link">Contacto</a>
+        <a href="#stack" class="app-header__link">Stack</a>
+        <a href="#proyectos" class="app-header__link">Proyectos</a>
+        <a href="#sobre-mi" class="app-header__link">Sobre mí</a>
+        <a href="#contacto" class="app-header__link">Contacto</a>
       </nav>
 
       <!-- Acción principal -->
@@ -24,17 +24,12 @@
           <span class="status-dot status-dot--green"></span>
           <span class="app-header__status-text">Disponible</span>
         </div>
-        <BaseButton variant="secondary" href="/resume.pdf">Resume PDF</BaseButton>
+        <!-- <BaseButton variant="secondary" href="/resume.pdf">Resume PDF</BaseButton> -->
       </div>
 
       <!-- Hamburger mobile -->
-      <button
-        class="app-header__hamburger"
-        :class="{ 'is-open': menuOpen }"
-        aria-label="Abrir menú"
-        :aria-expanded="menuOpen"
-        @click="menuOpen = !menuOpen"
-      >
+      <button class="app-header__hamburger" :class="{ 'is-open': menuOpen }" aria-label="Abrir menú"
+        :aria-expanded="menuOpen" @click="menuOpen = !menuOpen">
         <span></span>
         <span></span>
         <span></span>
@@ -45,16 +40,16 @@
     <!-- Mobile menu drawer -->
     <Transition name="menu-slide">
       <div v-if="menuOpen" class="app-header__mobile-menu" role="navigation" aria-label="Menú móvil">
-        <a href="#stack"     class="app-header__mobile-link" @click="menuOpen = false">Stack</a>
+        <a href="#stack" class="app-header__mobile-link" @click="menuOpen = false">Stack</a>
         <a href="#proyectos" class="app-header__mobile-link" @click="menuOpen = false">Proyectos</a>
-        <a href="#sobre-mi"  class="app-header__mobile-link" @click="menuOpen = false">Sobre mí</a>
-        <a href="#contacto"  class="app-header__mobile-link" @click="menuOpen = false">Contacto</a>
+        <a href="#sobre-mi" class="app-header__mobile-link" @click="menuOpen = false">Sobre mí</a>
+        <a href="#contacto" class="app-header__mobile-link" @click="menuOpen = false">Contacto</a>
         <div class="app-header__mobile-cta">
           <div class="app-header__mobile-status">
             <span class="status-dot status-dot--green"></span>
             <span class="app-header__status-text">Disponible para nuevos proyectos</span>
           </div>
-          <BaseButton variant="secondary" href="/resume.pdf">Resume PDF</BaseButton>
+          <!-- <BaseButton variant="secondary" href="/resume.pdf">Resume PDF</BaseButton> -->
         </div>
       </div>
     </Transition>
@@ -65,7 +60,7 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import BaseButton from '~/components/ui/BaseButton.vue';
 
-const menuOpen  = ref(false);
+const menuOpen = ref(false);
 const isScrolled = ref(false);
 
 function handleScroll() {
@@ -113,7 +108,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
 
 .app-header__link {
   font-family: var(--font-family-mono);
-  font-size: 12px;
+  font-size: var(--text-base);
   font-weight: 500;
   color: var(--color-text-secondary);
   text-decoration: none;
@@ -146,7 +141,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
 
 .app-header__status-text {
   font-family: var(--font-family-mono);
-  font-size: 11px;
+  font-size: var(--text-sm);
   color: var(--color-accent-green);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -183,9 +178,18 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
   transform-origin: center;
 }
 
-.app-header__hamburger.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.app-header__hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.app-header__hamburger.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.app-header__hamburger.is-open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.app-header__hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.app-header__hamburger.is-open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
 
 /* ── MOBILE MENU ── */
 .app-header__mobile-menu {
@@ -194,12 +198,12 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
   padding: var(--space-4) var(--space-6) var(--space-6);
   border-top: 1px solid var(--color-border);
   background-color: var(--color-surface-overlay-menu-mobile);
-  gap: 4px;
+  gap: var(--space-1);
 }
 
 .app-header__mobile-link {
   font-family: var(--font-family-mono);
-  font-size: 13px;
+  font-size: var(--text-md);
   color: var(--color-text-secondary);
   text-decoration: none;
   text-transform: uppercase;
@@ -231,6 +235,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
 .menu-slide-leave-active {
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
+
 .menu-slide-enter-from,
 .menu-slide-leave-to {
   opacity: 0;
@@ -241,10 +246,12 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
 
 /* Mobile: hasta 768px */
 @media (max-width: 768px) {
+
   .app-header__nav,
   .app-header__actions {
     display: none;
   }
+
   .app-header__hamburger {
     display: flex;
   }
@@ -255,15 +262,18 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
   .app-header__mobile-menu {
     display: none !important;
   }
+
   .app-header__hamburger {
     display: none;
   }
+
   .app-header__actions {
     display: flex;
   }
+
   .app-header__nav {
     display: flex;
-    gap: 24px;
+    gap: var(--space-6);
   }
 }
 
@@ -272,6 +282,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
   .app-header__status {
     display: flex;
   }
+
   .app-header__nav {
     gap: 36px;
   }

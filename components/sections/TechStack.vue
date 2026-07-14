@@ -17,25 +17,18 @@
         <div class="stack-col">
           <h3 class="stack-col__title">FRONTEND</h3>
           <ul class="stack-list">
-            <li class="stack-list__item">
-              <span class="stack-list__name">REACT / NEXT.JS</span>
-              <span class="stack-badge stack-badge--core">CORE</span>
-            </li>
-            <li class="stack-list__item">
-              <span class="stack-list__name">VUE / NUXT</span>
-              <span class="stack-badge stack-badge--core">CORE</span>
-            </li>
-            <li class="stack-list__item">
-              <span class="stack-list__name">ANGULAR</span>
-              <span class="stack-badge">ADVANCED</span>
-            </li>
-            <li class="stack-list__item">
-              <span class="stack-list__name">TYPESCRIPT (STRICT)</span>
-              <span class="stack-badge stack-badge--core">CORE</span>
-            </li>
-            <li class="stack-list__item">
-              <span class="stack-list__name">JAVASCRIPT (ES6+)</span>
-              <span class="stack-badge stack-badge--core">CORE</span>
+            <li 
+              v-for="(skill, index) in skills.frontend" 
+              :key="index" 
+              class="stack-list__item"
+            >
+              <span class="stack-list__name">{{ skill.name.toUpperCase() }}</span>
+              <span 
+                class="stack-badge" 
+                :class="{ 'stack-badge--core': skill.level === 'CORE' }"
+              >
+                {{ skill.level }}
+              </span>
             </li>
           </ul>
         </div>
@@ -44,33 +37,18 @@
         <div class="stack-col">
           <h3 class="stack-col__title">BACKEND &amp; DATA</h3>
           <ul class="stack-list">
-            <li class="stack-list__item">
-              <span class="stack-list__name">NODE.JS / NESTJS</span>
-              <span class="stack-badge stack-badge--core">CORE</span>
-            </li>
-            <li class="stack-list__item">
-              <span class="stack-list__name">JAVA</span>
-              <span class="stack-badge">ADVANCED</span>
-            </li>
-            <li class="stack-list__item">
-              <span class="stack-list__name">GO (GOLANG)</span>
-              <span class="stack-badge">FAMILIAR</span>
-            </li>
-            <li class="stack-list__item">
-              <span class="stack-list__name">PYTHON</span>
-              <span class="stack-badge">FAMILIAR</span>
-            </li>
-            <li class="stack-list__item">
-              <span class="stack-list__name">POSTGRES / MYSQL</span>
-              <span class="stack-badge stack-badge--core">CORE</span>
-            </li>
-            <li class="stack-list__item">
-              <span class="stack-list__name">SQL SERVER</span>
-              <span class="stack-badge">ADVANCED</span>
-            </li>
-            <li class="stack-list__item">
-              <span class="stack-list__name">REDIS / KAFKA</span>
-              <span class="stack-badge">ADVANCED</span>
+            <li 
+              v-for="(skill, index) in skills.backend" 
+              :key="index" 
+              class="stack-list__item"
+            >
+              <span class="stack-list__name">{{ skill.name.toUpperCase() }}</span>
+              <span 
+                class="stack-badge" 
+                :class="{ 'stack-badge--core': skill.level === 'CORE' }"
+              >
+                {{ skill.level }}
+              </span>
             </li>
           </ul>
         </div>
@@ -79,25 +57,18 @@
         <div class="stack-col">
           <h3 class="stack-col__title">DEVOPS &amp; CLOUD</h3>
           <ul class="stack-list">
-            <li class="stack-list__item">
-              <span class="stack-list__name">AWS (CLOUD)</span>
-              <span class="stack-badge stack-badge--core">CORE</span>
-            </li>
-            <li class="stack-list__item">
-              <span class="stack-list__name">DOCKER / K8S</span>
-              <span class="stack-badge stack-badge--core">CORE</span>
-            </li>
-            <li class="stack-list__item">
-              <span class="stack-list__name">GITHUB ACTIONS / CI</span>
-              <span class="stack-badge stack-badge--core">CORE</span>
-            </li>
-            <li class="stack-list__item">
-              <span class="stack-list__name">RABBITMQ</span>
-              <span class="stack-badge">FAMILIAR</span>
-            </li>
-            <li class="stack-list__item">
-              <span class="stack-list__name">GIT / BASH</span>
-              <span class="stack-badge stack-badge--core">CORE</span>
+            <li 
+              v-for="(skill, index) in skills.devops" 
+              :key="index" 
+              class="stack-list__item"
+            >
+              <span class="stack-list__name">{{ skill.name.toUpperCase() }}</span>
+              <span 
+                class="stack-badge" 
+                :class="{ 'stack-badge--core': skill.level === 'CORE' }"
+              >
+                {{ skill.level }}
+              </span>
             </li>
           </ul>
         </div>
@@ -109,18 +80,22 @@
 
 <script setup lang="ts">
 import SectionHeader from '~/components/ui/SectionHeader.vue';
+import { usePortfolioData } from '~/composables/usePortfolioData';
+
+const { getSkills } = usePortfolioData();
+const skills = getSkills();
 </script>
 
 <style scoped>
 /* ── INTRO ── */
 .tech-stack__intro {
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--section-intro-mb);
   max-width: 760px;
 }
 
 .tech-stack__intro p {
   font-family: var(--font-family-mono);
-  font-size: 14px;
+  font-size: var(--text-lg);
   line-height: 1.7;
   color: var(--color-text-secondary);
 }
@@ -128,14 +103,14 @@ import SectionHeader from '~/components/ui/SectionHeader.vue';
 /* ── GRID DE COLUMNAS ── */
 .tech-stack__grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-12);
 }
 
 /* Tablet (2 cols) */
 @media (min-width: 768px) and (max-width: 1023px) {
   .tech-stack__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-8);
   }
   /* DevOps ocupa la fila completa en tablet 2 cols */
@@ -147,7 +122,7 @@ import SectionHeader from '~/components/ui/SectionHeader.vue';
 /* Desktop (3 cols) */
 @media (min-width: 1024px) {
   .tech-stack__grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-8);
   }
 }
@@ -155,7 +130,7 @@ import SectionHeader from '~/components/ui/SectionHeader.vue';
 /* ── COLUMNA ── */
 .stack-col__title {
   font-family: var(--font-family-mono);
-  font-size: 14px;
+  font-size: var(--text-lg);
   color: var(--color-accent-blue);
   font-weight: 600;
   text-transform: uppercase;
@@ -177,7 +152,7 @@ import SectionHeader from '~/components/ui/SectionHeader.vue';
   justify-content: space-between;
   align-items: center;
   font-family: var(--font-family-mono);
-  font-size: 13px;
+  font-size: var(--text-md);
   color: var(--color-text-secondary);
   padding: var(--space-4) var(--space-3);
   border-bottom: 1px solid var(--color-border);
@@ -195,14 +170,15 @@ import SectionHeader from '~/components/ui/SectionHeader.vue';
 
 .stack-list__name {
   flex: 1;
+  min-width: 0;
 }
 
 /* ── BADGE DE NIVEL ── */
 .stack-badge {
   font-family: var(--font-family-mono);
-  font-size: 10px;
+  font-size: var(--text-xs);
   letter-spacing: 0.1em;
-  padding: 3px 8px;
+  padding: 3px var(--space-2);
   border-radius: var(--radius-sm);
   background-color: var(--color-surface-base);
   border: 1px solid var(--color-border);
@@ -220,10 +196,10 @@ import SectionHeader from '~/components/ui/SectionHeader.vue';
 /* ── MOBILE ── */
 @media (max-width: 480px) {
   .tech-stack__intro p {
-    font-size: 13px;
+    font-size: var(--text-md);
   }
   .stack-list__item {
-    font-size: 12px;
+    font-size: var(--text-base);
     padding: var(--space-3) var(--space-2);
   }
 }

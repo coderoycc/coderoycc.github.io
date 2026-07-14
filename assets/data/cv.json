@@ -1,0 +1,211 @@
+{
+  "profile": {
+    "name": "Roberto Carlos",
+    "lastName": "Chambi Calizaya",
+    "title": "Full Stack Developer & DevOps Engineer",
+    "location": "La Paz, Bolivia",
+    "email": "rcchambi4@gmail.com",
+    "phone": "+591 79656767",
+    "github": "https://github.com/coderoycc",
+    "linkedin": "https://www.linkedin.com/in/coderoycc",
+    "website": "https://coderoycc.github.io",
+    "summary": "Full Stack Developer con +3 años de experiencia diseñando y desarrollando aplicaciones web end-to-end escalables. Especializado en Vue.js y TypeScript, con dominio del ecosistema JavaScript completo (Vue 3, NuxtJS, Angular, React) tanto en frontend como backend con Node.js, ExpressJS y NestJS. Amplia experiencia trabajando bajo metodología Agile, entregando soluciones iterativas en equipos multidisciplinarios. Sólida base en arquitecturas modernas (Microservicios, REST APIs), optimización de bases de datos relacionales y despliegue automatizado (Docker, CI/CD). Trayectoria comprobada mejorando la eficiencia operativa, reduciendo costos y optimizando la experiencia del usuario final.",
+    "availability": "Full-Time / Remoto",
+    "languages": "Español (Nativo) · Inglés (B1/B2 - Lectura Técnica)",
+    "timezone": "BOT (UTC-4)"
+  },
+  "skills": {
+    "frontend": [
+      { "name": "Vue / Nuxt", "level": "CORE" },
+      { "name": "React / Next.js", "level": "CORE" },
+      { "name": "Angular", "level": "ADVANCED" },
+      { "name": "TypeScript (Strict)", "level": "CORE" },
+      { "name": "JavaScript (ES6+)", "level": "CORE" },
+      { "name": "JQuery", "level": "CORE" }
+    ],
+    "backend": [
+      { "name": "Node.js / ExpressJS", "level": "CORE" },
+      { "name": "NestJS", "level": "CORE" },
+      { "name": "Laravel / PHP", "level": "ADVANCED" },
+      { "name": "Go (Golang) / Fiber", "level": "FAMILIAR" },
+      { "name": "Python", "level": "FAMILIAR" },
+      { "name": "Microservicios & REST APIs", "level": "CORE" },
+      { "name": "PostgreSQL / MySQL", "level": "CORE" },
+      { "name": "SQL Server", "level": "ADVANCED" },
+      { "name": "TypeORM", "level": "ADVANCED" },
+      { "name": "Firebase", "level": "ADVANCED" }
+    ],
+    "devops": [
+      { "name": "AWS (Cloud)", "level": "CORE" },
+      { "name": "Docker / K8s", "level": "CORE" },
+      { "name": "GitHub Actions / CI/CD", "level": "CORE" },
+      { "name": "RabbitMQ / Colas", "level": "FAMILIAR" },
+      { "name": "Git / Bash", "level": "CORE" }
+    ]
+  },
+  "experience": [
+    {
+      "role": "Full Stack Developer",
+      "company": "Hansa Ltda.",
+      "location": "La Paz, Bolivia",
+      "period": "Dic. 2024 – Actualmente",
+      "technologies": [
+        "Vue 3",
+        "OpenLayers",
+        "TypeScript",
+        "NodeJS",
+        "Microservicios",
+        "CI/CD",
+        "Docker"
+      ],
+      "accomplishments": [
+        "Implementé nuevas funcionalidades en un CRM, diseñando e integrando nuevos componentes en el frontend.",
+        "Desarrollé e integré mapas interactivos con Vue3 OpenLayers, incluyendo dibujo de geocercas, planificación basada en zonas y herramientas de trazado avanzadas.",
+        "Refactoricé componentes clave del módulo de mapas en un CRM para mejorar rendimiento, mantenibilidad y experiencia del usuario.",
+        "Construí micro-componentes en Vue3 (module federation) para una integración descentralizada de nuevas funcionalidades.",
+        "Construí APIs y servicios backend para la gestión de mapas, geocercas y planificación, bajo una arquitectura de microservicios y comunicación por colas.",
+        "Reestructuré el módulo de planificación de visitas para lograr tiempos de carga significativamente más rápidos mediante carga progresiva y optimización de consultas.",
+        "Implementé y mantuve pipelines de CI/CD para los servicios relacionados con mapas y planificación.",
+        "Construí reportes visuales y exportables a Excel, mejorando la capacidad de análisis y la toma de decisiones del equipo."
+      ]
+    },
+    {
+      "role": "Full Stack Developer Jr.",
+      "company": "STIS & Bloomcker",
+      "location": "La Paz, Bolivia",
+      "period": "Ene. 2023 – Dic. 2024",
+      "technologies": [
+        "Laravel",
+        "PHP",
+        "SQL Server",
+        "ExpressJS",
+        "React",
+        "Go",
+        "GitHub Actions",
+        "PostgreSQL"
+      ],
+      "accomplishments": [
+        "Desarrollé y mantuve aplicaciones web utilizando Laravel, PHP y SQL Server, implementando nuevas funcionalidades según requerimientos del cliente.",
+        "Colaboré en la implementación de facturación electrónica para un sistema web de inventarios.",
+        "Colaboré en el mantenimiento de servicios web, APIs (PHP, ExpressJS) y aplicaciones existentes, asegurando su correcto funcionamiento.",
+        "Migré sistemas legacy a arquitectura moderna refactorizando procedimientos almacenados SQL a servicios monolito con frameworks modernos, mejorando rendimiento en gran porcentaje y reduciendo deuda técnica.",
+        "Lideré la refactorización de un sistema de avalúos bancarios (ExpressJS, React), reestructurando el funcionamiento del sistema y agregando nuevos flujos de trabajo.",
+        "Participé en la depuración y optimización de portales web bancarios con problemas de rendimiento.",
+        "Colaboré en el mantenimiento de una API multitenant de un sistema ecommerce en Go.",
+        "Administré bases de datos relacionales (SQL Server, MySQL, PostgreSQL) diseñando esquemas normalizados, stored procedures y optimización de queries complejas.",
+        "Diseñé e implementé pipelines de CI/CD con GitHub Actions, automatizando workflows de build y deployment automático desde repositorios GitHub hacia servidores de producción."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "year": "2025",
+      "category": "LIBRERÍA / OPEN SOURCE",
+      "status": "↑ DEPLOYED",
+      "title": "VUE BOTTOM SHEET WRAPPER",
+      "description": "Una librería en NPM moderna, ligera y altamente personalizable para implementar componentes bottom sheet en aplicaciones Vue. Soporta gestos táctiles fluidos, animaciones físicas nativas y personalización de temas.",
+      "tags": ["VUE", "TYPESCRIPT", "NPM", "CSS"],
+      "metric": "V2.0.0 PUBLICADA EN NPM",
+      "links": {
+        "github": "https://github.com/coderoycc",
+        "demo": "https://coderoycc.github.io/bsw-demo/#/",
+        "npm": "https://www.npmjs.com/package/@coderoycc/bottom-sheet-wrappers/v/2.0.0"
+      },
+      "featured": true
+    },
+    {
+      "year": "2024",
+      "category": "BACKEND / ARQUITECTURA",
+      "status": "↑ DEPLOYED",
+      "title": "NOTIFICATION SYSTEM",
+      "description": "Una abstracción y arquitectura backend de un sistema de notificaciones multicanal flexible. Diseñado bajo principios de Clean Architecture para enviar notificaciones mediante push, emails y SMS desacoplando proveedores.",
+      "tags": ["TYPESCRIPT", "NODE", "CLEAN ARCHITECTURE"],
+      "metric": "ABSTRACCIÓN MULTICANAL",
+      "links": {
+        "github": "https://github.com/coderoycc/notifications"
+      },
+      "featured": false
+    },
+    {
+      "year": "2023",
+      "category": "PLATAFORMA CORE",
+      "status": "🔒",
+      "locked": true,
+      "title": "SISTEMA CORE BANCARIO V2",
+      "description": "Rediseño integral de la arquitectura de microservicios para el procesamiento de transacciones en tiempo real con baja latencia y alta disponibilidad. Código de propiedad exclusiva y sujeto a acuerdo de confidencialidad.",
+      "tags": ["NESTJS", "NODE", "TYPESCRIPT", "KUBERNETES"],
+      "metric": "10.000+ TRANSACCIONES / 99.99% DISPONIBILIDAD",
+      "featured": false
+    },
+    {
+      "year": "2023",
+      "category": "DEVOPS / CLOUD",
+      "status": "🔒",
+      "locked": true,
+      "title": "ORQUESTADOR DE CI/CD",
+      "description": "Herramienta interna para la orquestación de despliegues multi-cloud automatizando validaciones de seguridad en entornos críticos integrados. Código de propiedad exclusiva del cliente.",
+      "tags": ["PYTHON", "JAVA", "AWS"],
+      "metric": "50 DEPLOYMENTS / HORA",
+      "featured": false
+    }
+  ],
+  "education": [
+    {
+      "degree": "Licenciatura en Informática",
+      "institution": "Universidad Mayor de San Andrés",
+      "location": "Bolivia",
+      "year": "Graduado: 2023"
+    },
+    {
+      "degree": "Técnico Medio Paquetes Informáticos",
+      "institution": "Instituto Técnico Cristo de la Concordia",
+      "location": "Bolivia",
+      "year": "Graduado: 2017"
+    }
+  ],
+  "courses": [
+    {
+      "name": "No Code AI Agent Builder",
+      "provider": "SimpliLearn SkillUp",
+      "year": "2025"
+    },
+    { "name": "Desarrollo con IA", "provider": "Big School", "year": "2025" },
+    {
+      "name": "Scrum Foundation Professional Certificate SFPC",
+      "provider": "Agile Scrum Foundation",
+      "year": "2023"
+    },
+    {
+      "name": "Curso profesional de Deploy en Servidores",
+      "provider": "Código Facilito",
+      "year": "2023"
+    },
+    {
+      "name": "Curso profesional de Angular",
+      "provider": "Código Facilito",
+      "year": "2022"
+    },
+    {
+      "name": "Curso profesional de Bases de Datos",
+      "provider": "Código Facilito",
+      "year": "2022"
+    }
+  ],
+  "trainings": [
+    {
+      "name": "Capacitación Business Intelligence",
+      "provider": "Alura Latam",
+      "year": "2024"
+    },
+    {
+      "name": "Capacitación Idioma extranjero Inglés Nivel B1-2",
+      "provider": "JCI Gold Master",
+      "year": "2024"
+    },
+    {
+      "name": "Docente en curso: 'Desarrollo Web Moderno con Frameworks JavaScript'",
+      "provider": "JCI Lideres Gold Master",
+      "year": "2024"
+    }
+  ]
+}

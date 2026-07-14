@@ -6,32 +6,29 @@
 
       <!-- Intro -->
       <p class="about__intro">
-        Soy un ingeniero de software boliviano con más de 5 años construyendo productos digitales reales —
-        desde APIs de alto tráfico hasta interfaces que la gente usa a diario.
-        <strong>Me muevo igual de cómodo en el backend que en el frontend</strong>, y cuando hace falta,
-        configuro la infraestructura yo mismo.
+        {{ profile.summary }}
       </p>
 
       <!-- Datos rápidos: fila horizontal -->
       <div class="about__quick-info">
         <div class="about__quick-item">
           <span class="about__quick-label">UBICACIÓN</span>
-          <span class="about__quick-value">BOLIVIA / REMOTO</span>
+          <span class="about__quick-value">{{ profile.location.toUpperCase() }}</span>
         </div>
         <div class="about__quick-sep" aria-hidden="true"></div>
         <div class="about__quick-item">
           <span class="about__quick-label">IDIOMAS</span>
-          <span class="about__quick-value">ESPAÑOL (NATIVO) · INGLÉS (B2)</span>
+          <span class="about__quick-value">{{ profile.languages.toUpperCase() }}</span>
         </div>
         <div class="about__quick-sep" aria-hidden="true"></div>
         <div class="about__quick-item">
           <span class="about__quick-label">DISPONIBILIDAD</span>
-          <span class="about__quick-value">FULL-TIME · FREELANCE</span>
+          <span class="about__quick-value">{{ profile.availability.toUpperCase() }}</span>
         </div>
         <div class="about__quick-sep" aria-hidden="true"></div>
         <div class="about__quick-item">
           <span class="about__quick-label">ZONA HORARIA</span>
-          <span class="about__quick-value">BOT (UTC-4)</span>
+          <span class="about__quick-value">{{ profile.timezone.toUpperCase() }}</span>
         </div>
       </div>
 
@@ -61,7 +58,7 @@
           <h3 class="about-card__title">MÁS ALLÁ DEL CÓDIGO</h3>
           <p class="about-card__text">
             Aprendo constantemente: cursos, papers técnicos, contribuciones open source. Fuera del teclado,
-            el ajedrez y la física teórica me mantienen el cerebro activo.
+            el ajedrez y el estudio de nuevas tecnologías mantienen mi cerebro activo.
           </p>
         </div>
 
@@ -82,13 +79,17 @@
 
 <script setup lang="ts">
 import SectionHeader from '~/components/ui/SectionHeader.vue';
+import { usePortfolioData } from '~/composables/usePortfolioData';
+
+const { getProfile } = usePortfolioData();
+const profile = getProfile();
 </script>
 
 <style scoped>
 /* ── INTRO ── */
 .about__intro {
   font-family: var(--font-family-mono);
-  font-size: 14px;
+  font-size: var(--text-lg);
   line-height: 1.9;
   color: var(--color-text-secondary);
   max-width: 800px;
@@ -131,7 +132,7 @@ import SectionHeader from '~/components/ui/SectionHeader.vue';
 
 .about__quick-label {
   font-family: var(--font-family-mono);
-  font-size: 10px;
+  font-size: var(--text-xs);
   color: var(--color-accent-blue);
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -139,28 +140,29 @@ import SectionHeader from '~/components/ui/SectionHeader.vue';
 
 .about__quick-value {
   font-family: var(--font-family-mono);
-  font-size: 12px;
+  font-size: var(--text-base);
   color: var(--color-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  overflow-wrap: break-word;
 }
 
 /* ── CARDS GRID: 2x2 ── */
 .about__cards {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-4);
 }
 
 @media (min-width: 640px) {
   .about__cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 1024px) {
   .about__cards {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
@@ -183,14 +185,14 @@ import SectionHeader from '~/components/ui/SectionHeader.vue';
 
 .about-card__num {
   font-family: var(--font-family-mono);
-  font-size: 11px;
+  font-size: var(--text-sm);
   color: var(--color-accent-blue);
   letter-spacing: 0.08em;
 }
 
 .about-card__title {
   font-family: var(--font-family-display);
-  font-size: 13px;
+  font-size: var(--text-md);
   font-weight: 700;
   color: var(--color-text-primary);
   text-transform: uppercase;
@@ -200,7 +202,7 @@ import SectionHeader from '~/components/ui/SectionHeader.vue';
 
 .about-card__text {
   font-family: var(--font-family-mono);
-  font-size: 12px;
+  font-size: var(--text-base);
   line-height: 1.8;
   color: var(--color-text-secondary);
   letter-spacing: 0.02em;
@@ -229,7 +231,7 @@ import SectionHeader from '~/components/ui/SectionHeader.vue';
 
 @media (max-width: 480px) {
   .about__intro {
-    font-size: 13px;
+    font-size: var(--text-md);
   }
   .about__cards {
     gap: var(--space-3);

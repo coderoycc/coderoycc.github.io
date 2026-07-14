@@ -16,15 +16,15 @@ defineProps<{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 32px;
+  padding: var(--button-padding-y) var(--button-padding-x);
   font-family: var(--font-family-mono);
-  font-size: 14px;
+  font-size: var(--button-font-size);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition-fast);
   border: 1px solid transparent;
   background: transparent;
   color: var(--color-text-primary);
@@ -43,7 +43,7 @@ defineProps<{
   color: var(--color-text-primary);
 }
 .base-button--secondary:hover {
-  background-color: rgba(77, 124, 254, 0.1);
+  background-color: var(--color-accent-blue-10);
 }
 
 .base-button--ghost {

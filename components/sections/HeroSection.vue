@@ -1,44 +1,55 @@
 <template>
   <section class="hero">
+    <!-- Animated background grid glow -->
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__bg-orb hero__bg-orb--1"></div>
+      <div class="hero__bg-orb hero__bg-orb--2"></div>
+    </div>
+
     <div class="container hero__inner">
 
-      <!-- Badge de disponibilidad (usa .badge global) -->
-      <div class="badge hero__badge">
-        <span class="status-dot status-dot--blue"></span>
-        DISPONIBLE PARA NUEVOS PROYECTOS ({{ profile.availability }})
+      <!-- Badge de disponibilidad -->
+      <div class="badge hero__badge reveal reveal--fade">
+        <span class="status-dot status-dot--green"></span>
+        OPEN TO REMOTE OPPORTUNITIES · {{ profile.availability }}
       </div>
 
       <!-- Saludo -->
-      <div class="hero__greeting">HOLA, SOY</div>
+      <div class="hero__greeting reveal reveal--up reveal--delay-1">HI, I'M</div>
 
       <!-- Título principal -->
-      <h1 class="hero__title">
+      <h1 class="hero__title reveal reveal--up reveal--delay-1">
         <span class="hero__title-accent">{{ profile.name.toUpperCase() }}</span><br />
         {{ profile.lastName.toUpperCase() }}
       </h1>
 
       <!-- Rol / descripción -->
-      <p class="hero__subtitle">
-        {{ profile.title.toUpperCase() }} · DISEÑANDO SISTEMAS
-        ESCALABLES CON PRECISIÓN TÉCNICA Y RIGOR ARQUITECTÓNICO.
+      <p class="hero__subtitle reveal reveal--up reveal--delay-2">
+        {{ profile.title.toUpperCase() }} · DESIGNING SCALABLE SYSTEMS
+        WITH TECHNICAL PRECISION AND ARCHITECTURAL RIGOR.
       </p>
 
       <!-- Métricas -->
-      <div class="hero__metrics">
+      <div class="hero__metrics reveal reveal--up reveal--delay-2">
         <div class="hero__metric">
           <span class="hero__metric-value">3<span class="hero__metric-plus">+</span></span>
-          <span class="hero__metric-label">AÑOS DE EXPERIENCIA</span>
+          <span class="hero__metric-label">YEARS OF EXPERIENCE</span>
         </div>
         <div class="hero__metric-sep" aria-hidden="true"></div>
         <div class="hero__metric">
           <span class="hero__metric-value">Full<span class="hero__metric-plus">stack</span></span>
           <span class="hero__metric-label">FRONTEND · BACKEND · CLOUD</span>
         </div>
+        <div class="hero__metric-sep" aria-hidden="true"></div>
+        <div class="hero__metric">
+          <span class="hero__metric-value">BOT<span class="hero__metric-plus"> UTC-4</span></span>
+          <span class="hero__metric-label">REMOTE-READY TIMEZONE</span>
+        </div>
       </div>
 
       <!-- Stack principal -->
-      <div class="hero__stack">
-        <span class="hero__stack-label">STACK PRINCIPAL →</span>
+      <div class="hero__stack reveal reveal--up reveal--delay-3">
+        <span class="hero__stack-label">CORE STACK →</span>
         <div class="hero__stack-tags">
           <span class="hero__tag hero__tag--highlight">Vue / Nuxt</span>
           <span class="hero__tag">Node.js / NestJS</span>
@@ -49,13 +60,13 @@
         </div>
       </div>
 
-      <!-- Divider (usa .gradient-divider global) -->
+      <!-- Divider -->
       <div class="gradient-divider hero__divider" aria-hidden="true"></div>
 
       <!-- CTAs -->
-      <div class="hero__actions">
-        <BaseButton variant="primary"  href="#proyectos">VER PROYECTOS</BaseButton>
-        <BaseButton variant="ghost"    href="#contacto">CONTACTO</BaseButton>
+      <div class="hero__actions reveal reveal--up reveal--delay-3">
+        <BaseButton variant="primary" href="#proyectos">VIEW PROJECTS</BaseButton>
+        <BaseButton variant="ghost" href="#contacto">GET IN TOUCH</BaseButton>
       </div>
 
     </div>
@@ -65,9 +76,12 @@
 <script setup lang="ts">
 import BaseButton from '~/components/ui/BaseButton.vue';
 import { usePortfolioData } from '~/composables/usePortfolioData';
+import { useScrollReveal } from '~/composables/useScrollReveal';
 
 const { getProfile } = usePortfolioData();
 const profile = getProfile();
+
+useScrollReveal();
 </script>
 
 <style scoped>
@@ -77,11 +91,56 @@ const profile = getProfile();
   display: flex;
   align-items: center;
   padding-top: var(--header-height);
+  position: relative;
+  overflow: hidden;
 }
 
 .hero__inner {
   padding-top: var(--space-10);
   padding-bottom: var(--space-10);
+  position: relative;
+  z-index: 1;
+}
+
+/* ── FONDO ANIMADO ── */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero__bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: orb-float 12s ease-in-out infinite;
+}
+
+.hero__bg-orb--1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(77, 124, 254, 0.12) 0%, transparent 70%);
+  top: -10%;
+  left: -5%;
+  animation-delay: 0s;
+}
+
+.hero__bg-orb--2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(77, 124, 254, 0.08) 0%, transparent 70%);
+  top: 20%;
+  right: 10%;
+  animation-delay: -6s;
+  animation-direction: reverse;
+}
+
+@keyframes orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(20px, -30px) scale(1.05); }
+  66%       { transform: translate(-15px, 20px) scale(0.95); }
 }
 
 /* ── BADGE ── */
@@ -192,7 +251,7 @@ const profile = getProfile();
   letter-spacing: 0.1em;
   white-space: nowrap;
   flex-shrink: 0;
-  padding-top: 5px; /* alineación visual con los tags */
+  padding-top: 5px;
 }
 
 .hero__stack-tags {
@@ -235,13 +294,14 @@ const profile = getProfile();
 /* ── ACTIONS ── */
 .hero__actions {
   display: flex;
+  align-items: center;
   gap: var(--space-4);
   flex-wrap: wrap;
 }
 
-/* ── RESPONSIVE ── */
 
-/* Tablet: 600px+ → separador vertical en métricas */
+
+/* ── RESPONSIVE ── */
 @media (min-width: 600px) {
   .hero__metrics {
     gap: 0;
@@ -258,11 +318,11 @@ const profile = getProfile();
   }
 }
 
-/* Mobile: hasta 480px */
 @media (max-width: 480px) {
   .hero__actions {
     flex-direction: column;
     width: 100%;
+    align-items: stretch;
   }
   .hero__greeting {
     font-size: var(--text-md);
@@ -272,7 +332,6 @@ const profile = getProfile();
   }
 }
 
-/* Mobile pequeño: hasta 360px */
 @media (max-width: 360px) {
   .hero__stack {
     flex-direction: column;

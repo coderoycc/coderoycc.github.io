@@ -1,20 +1,22 @@
 <template>
   <section id="proyectos" class="projects section-padding">
     <div class="container">
-      <SectionHeader number="01" title="Proyectos Destacados" />
+      <SectionHeader number="01" title="Featured Projects" />
 
       <div class="projects__grid">
         <ProjectCard
           v-for="(project, index) in projects"
           :key="index"
           v-bind="project"
+          class="reveal reveal--up"
+          :class="`reveal--delay-${index + 1}`"
         />
       </div>
 
-      <!-- Botón para ver trayectoria en una nueva página -->
-      <div class="projects__actions">
+      <!-- Botón para ver trayectoria -->
+      <div class="projects__actions reveal reveal--fade reveal--delay-2">
         <NuxtLink to="/trayectoria" class="btn-experience">
-          [ VER TRAYECTORIA PROFESIONAL → ]
+          [ VIEW FULL PROFESSIONAL TIMELINE → ]
         </NuxtLink>
       </div>
     </div>
@@ -25,9 +27,12 @@
 import SectionHeader from '~/components/ui/SectionHeader.vue';
 import ProjectCard from '~/components/ui/ProjectCard.vue';
 import { usePortfolioData } from '~/composables/usePortfolioData';
+import { useScrollReveal } from '~/composables/useScrollReveal';
 
 const { getProjects } = usePortfolioData();
 const projects = getProjects().slice(0, 3);
+
+useScrollReveal();
 </script>
 
 <style scoped>
@@ -61,23 +66,18 @@ const projects = getProjects().slice(0, 3);
   background-color: var(--color-accent-blue-05);
   border-color: var(--color-accent-blue);
   color: var(--color-text-primary);
-  /* sutil resplandor técnico */
   box-shadow: 0 0 8px var(--color-accent-blue-20);
 }
 
-/* Tablet: 2 columnas desde 992px */
 @media (min-width: 992px) {
   .projects__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  /* El primer card (featured) ocupa la fila completa */
   .projects__grid > :first-child {
     grid-column: 1 / -1;
   }
 }
 
-/* Mobile pequeño: gap reducido */
 @media (max-width: 480px) {
   .projects__grid {
     gap: var(--space-4);

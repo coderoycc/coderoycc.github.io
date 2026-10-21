@@ -1,25 +1,26 @@
 <template>
   <section id="experiencia" class="experience section-padding">
     <div class="container">
-      <SectionHeader number="04" title="Trayectoria Profesional" />
+      <SectionHeader number="02" title="Professional Experience" />
 
       <div class="experience__timeline">
-        <div 
-          v-for="(job, index) in experience" 
-          :key="index" 
-          class="experience__item"
+        <div
+          v-for="(job, index) in experience"
+          :key="index"
+          class="experience__item reveal reveal--up"
+          :class="`reveal--delay-${index + 1}`"
         >
-          <!-- Línea vertical decorativa de fondo -->
+          <!-- Línea vertical decorativa -->
           <div class="experience__line" aria-hidden="true"></div>
 
-          <!-- Lado izquierdo: Metadatos temporales y de empresa -->
+          <!-- Lado izquierdo: Metadatos -->
           <div class="experience__meta">
             <span class="experience__period">{{ job.period }}</span>
             <h4 class="experience__company">{{ job.company.toUpperCase() }}</h4>
             <span class="experience__location">{{ job.location.toUpperCase() }}</span>
           </div>
 
-          <!-- Nodo indicador en el timeline -->
+          <!-- Nodo del timeline -->
           <div class="experience__node">
             <div class="experience__node-dot"></div>
           </div>
@@ -27,11 +28,11 @@
           <!-- Lado derecho: Detalles del rol -->
           <div class="experience__content">
             <h3 class="experience__role">{{ job.role.toUpperCase() }}</h3>
-            
+
             <ul class="experience__list">
-              <li 
-                v-for="(accomplishment, accIndex) in job.accomplishments" 
-                :key="accIndex" 
+              <li
+                v-for="(accomplishment, accIndex) in job.accomplishments"
+                :key="accIndex"
                 class="experience__list-item"
               >
                 {{ accomplishment }}
@@ -39,9 +40,9 @@
             </ul>
 
             <div class="experience__tags" v-if="job.technologies && job.technologies.length">
-              <span 
-                v-for="tech in job.technologies" 
-                :key="tech" 
+              <span
+                v-for="tech in job.technologies"
+                :key="tech"
                 class="experience__tag"
               >
                 {{ tech.toUpperCase() }}
@@ -57,9 +58,12 @@
 <script setup lang="ts">
 import SectionHeader from '~/components/ui/SectionHeader.vue';
 import { usePortfolioData } from '~/composables/usePortfolioData';
+import { useScrollReveal } from '~/composables/useScrollReveal';
 
 const { getExperience } = usePortfolioData();
 const experience = getExperience();
+
+useScrollReveal();
 </script>
 
 <style scoped>
@@ -87,16 +91,15 @@ const experience = getExperience();
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 260px; /* Centrado en la columna del nodo */
+  left: 260px;
   width: 1px;
   background-color: var(--color-border);
   z-index: 1;
 }
 
-/* Ocultar la línea en el último elemento */
 .experience__item:last-child .experience__line {
   bottom: auto;
-  height: 24px; /* Termina en el nodo */
+  height: 24px;
 }
 
 /* Lado izquierdo */
@@ -132,7 +135,7 @@ const experience = getExperience();
   letter-spacing: 0.05em;
 }
 
-/* Nodo (círculo) */
+/* Nodo */
 .experience__node {
   display: flex;
   justify-content: center;
@@ -234,7 +237,6 @@ const experience = getExperience();
   .experience__item {
     grid-template-columns: 180px 40px 1fr;
   }
-  
   .experience__line {
     left: 200px;
   }
@@ -244,20 +246,14 @@ const experience = getExperience();
   .experience__timeline {
     gap: var(--space-8);
   }
-
   .experience__item {
     grid-template-columns: 1fr;
     gap: var(--space-4);
   }
-
-  .experience__line {
-    display: none;
-  }
-
+  .experience__line,
   .experience__node {
     display: none;
   }
-
   .experience__meta {
     align-items: flex-start;
     text-align: left;
@@ -265,7 +261,6 @@ const experience = getExperience();
     padding-left: var(--space-4);
     padding-top: 0;
   }
-
   .experience__content {
     margin-left: 0;
     padding: var(--space-5);

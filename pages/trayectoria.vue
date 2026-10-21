@@ -1,20 +1,20 @@
 <template>
   <div class="trayectoria-page page-padding-top">
     <div class="container">
-      <!-- Navegación de regreso arriba -->
+      <!-- Navegación de regreso -->
       <div class="trayectoria-page__back">
         <NuxtLink to="/" class="btn-back">
-          [ ← VOLVER AL INICIO ]
+          [ ← BACK TO HOME ]
         </NuxtLink>
       </div>
 
       <!-- Renderizado de la sección de trayectoria -->
       <ExperienceSection />
 
-      <!-- Navegación de regreso abajo para facilitar lectura -->
+      <!-- Navegación de regreso abajo -->
       <div class="trayectoria-page__back trayectoria-page__back--bottom">
         <NuxtLink to="/" class="btn-back">
-          [ ← VOLVER AL INICIO ]
+          [ ← BACK TO HOME ]
         </NuxtLink>
       </div>
     </div>
@@ -25,12 +25,21 @@
 import ExperienceSection from '~/components/sections/ExperienceSection.vue';
 
 useSeoMeta({
-  title: 'Trayectoria Profesional - Roberto Carlos Chambi',
-  description: 'Historial laboral, responsabilidades y logros de Roberto Carlos Chambi como desarrollador Fullstack y DevOps.',
-  ogTitle: 'Trayectoria Profesional - Roberto Carlos Chambi',
-  ogDescription: 'Detalle de la experiencia profesional y proyectos de Roberto Carlos Chambi.',
+  title: 'Professional Experience — Roberto Carlos Chambi',
+  description: 'Full work history, responsibilities and achievements of Roberto Carlos Chambi as a Full Stack Developer & DevOps Engineer. 3+ years designing scalable systems.',
+  ogTitle: 'Professional Experience — Roberto Carlos Chambi | Full Stack Developer',
+  ogDescription: 'Detailed professional experience of Roberto Carlos Chambi: Full Stack Developer & DevOps Engineer with expertise in Vue, NestJS, Docker and AWS.',
   ogImage: '/og-image.jpg',
+  ogType: 'profile',
+  robots: 'index, follow',
   twitterCard: 'summary_large_image',
+});
+
+useHead({
+  htmlAttrs: { lang: 'en' },
+  link: [
+    { rel: 'canonical', href: 'https://coderoycc.github.io/trayectoria' },
+  ],
 });
 </script>
 

@@ -7,7 +7,7 @@
     "email": "rcchambi4@gmail.com",
     "phone": "+591 79656767",
     "github": "https://github.com/coderoycc",
-    "linkedin": "https://www.linkedin.com/in/coderoycc",
+    "linkedin": "https://www.linkedin.com/in/rcchambi4",
     "website": "https://coderoycc.github.io",
     "summary": "Full Stack Developer con +3 años de experiencia diseñando y desarrollando aplicaciones web end-to-end escalables. Especializado en Vue.js y TypeScript, con dominio del ecosistema JavaScript completo (Vue 3, NuxtJS, Angular, React) tanto en frontend como backend con Node.js, ExpressJS y NestJS. Amplia experiencia trabajando bajo metodología Agile, entregando soluciones iterativas en equipos multidisciplinarios. Sólida base en arquitecturas modernas (Microservicios, REST APIs), optimización de bases de datos relacionales y despliegue automatizado (Docker, CI/CD). Trayectoria comprobada mejorando la eficiencia operativa, reduciendo costos y optimizando la experiencia del usuario final.",
     "availability": "Full-Time / Remoto",
@@ -107,7 +107,7 @@
       "tags": ["VUE", "TYPESCRIPT", "NPM", "CSS"],
       "metric": "V2.0.0 PUBLICADA EN NPM",
       "links": {
-        "github": "https://github.com/coderoycc",
+        "github": "https://github.com/coderoycc/vue-bottom-sheet-wrapper",
         "demo": "https://coderoycc.github.io/bsw-demo/#/",
         "npm": "https://www.npmjs.com/package/@coderoycc/bottom-sheet-wrappers/v/2.0.0"
       },
@@ -129,7 +129,7 @@
     {
       "year": "2023",
       "category": "PLATAFORMA CORE",
-      "status": "🔒",
+      "status": "CONFIDENTIAL",
       "locked": true,
       "title": "SISTEMA CORE BANCARIO V2",
       "description": "Rediseño integral de la arquitectura de microservicios para el procesamiento de transacciones en tiempo real con baja latencia y alta disponibilidad. Código de propiedad exclusiva y sujeto a acuerdo de confidencialidad.",
@@ -140,7 +140,7 @@
     {
       "year": "2023",
       "category": "DEVOPS / CLOUD",
-      "status": "🔒",
+      "status": "CONFIDENTIAL",
       "locked": true,
       "title": "ORQUESTADOR DE CI/CD",
       "description": "Herramienta interna para la orquestación de despliegues multi-cloud automatizando validaciones de seguridad en entornos críticos integrados. Código de propiedad exclusiva del cliente.",

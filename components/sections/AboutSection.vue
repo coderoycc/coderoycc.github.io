@@ -2,72 +2,75 @@
   <section id="sobre-mi" class="about section-padding">
     <div class="container">
 
-      <SectionHeader number="03" title="Sobre Mí" />
+      <SectionHeader number="03" title="About Me" />
 
       <!-- Intro -->
-      <p class="about__intro">
+      <p class="about__intro reveal reveal--up">
         {{ profile.summary }}
       </p>
 
-      <!-- Datos rápidos: fila horizontal -->
-      <div class="about__quick-info">
+      <!-- Datos rápidos -->
+      <div class="about__quick-info reveal reveal--up reveal--delay-1">
         <div class="about__quick-item">
-          <span class="about__quick-label">UBICACIÓN</span>
+          <span class="about__quick-label">LOCATION</span>
           <span class="about__quick-value">{{ profile.location.toUpperCase() }}</span>
         </div>
         <div class="about__quick-sep" aria-hidden="true"></div>
         <div class="about__quick-item">
-          <span class="about__quick-label">IDIOMAS</span>
+          <span class="about__quick-label">LANGUAGES</span>
           <span class="about__quick-value">{{ profile.languages.toUpperCase() }}</span>
         </div>
         <div class="about__quick-sep" aria-hidden="true"></div>
         <div class="about__quick-item">
-          <span class="about__quick-label">DISPONIBILIDAD</span>
+          <span class="about__quick-label">AVAILABILITY</span>
           <span class="about__quick-value">{{ profile.availability.toUpperCase() }}</span>
         </div>
         <div class="about__quick-sep" aria-hidden="true"></div>
         <div class="about__quick-item">
-          <span class="about__quick-label">ZONA HORARIA</span>
+          <span class="about__quick-label">TIMEZONE</span>
           <span class="about__quick-value">{{ profile.timezone.toUpperCase() }}</span>
         </div>
       </div>
 
-      <!-- Cards: 2x2 + 1 full -->
+      <!-- Cards -->
       <div class="about__cards">
 
-        <div class="about-card">
+        <div class="about-card reveal reveal--up reveal--delay-1">
           <span class="about-card__num">[ 01 ]</span>
-          <h3 class="about-card__title">CÓMO TRABAJO</h3>
+          <h3 class="about-card__title">HOW I WORK</h3>
           <p class="about-card__text">
-            Código limpio, documentación precisa y comunicación proactiva. En equipos remotos, la visibilidad
-            es tan importante como el entregable. Prefiero sobre-comunicar a dejar huecos.
+            Clean code, precise documentation and proactive communication.
+            In remote teams, visibility matters as much as the deliverable.
+            I prefer over-communicating to leaving gaps.
           </p>
         </div>
 
-        <div class="about-card">
+        <div class="about-card reveal reveal--up reveal--delay-2">
           <span class="about-card__num">[ 02 ]</span>
-          <h3 class="about-card__title">QUÉ ME MOTIVA</h3>
+          <h3 class="about-card__title">WHAT DRIVES ME</h3>
           <p class="about-card__text">
-            Resolver problemas complejos con soluciones elegantes. Me gusta que el sistema escale sin
-            que nadie lo note, y que el código que escribo hoy lo pueda leer otro sin preguntas.
+            Solving complex problems with elegant solutions. I love when
+            the system scales without anyone noticing, and when the code I write
+            today can be read by someone else without questions.
           </p>
         </div>
 
-        <div class="about-card">
+        <div class="about-card reveal reveal--up reveal--delay-3">
           <span class="about-card__num">[ 03 ]</span>
-          <h3 class="about-card__title">MÁS ALLÁ DEL CÓDIGO</h3>
+          <h3 class="about-card__title">BEYOND THE CODE</h3>
           <p class="about-card__text">
-            Aprendo constantemente: cursos, papers técnicos, contribuciones open source. Fuera del teclado,
-            el ajedrez y el estudio de nuevas tecnologías mantienen mi cerebro activo.
+            Constant learner: courses, technical papers, open source contributions.
+            Off the keyboard, chess and exploring new technologies keep my
+            problem-solving mind sharp.
           </p>
         </div>
 
-        <div class="about-card">
+        <div class="about-card reveal reveal--up reveal--delay-4">
           <span class="about-card__num">[ 04 ]</span>
-          <h3 class="about-card__title">MI OBJETIVO AHORA</h3>
+          <h3 class="about-card__title">MY GOAL NOW</h3>
           <p class="about-card__text">
-            Unirme a un equipo de producto ambicioso donde pueda aportar desde la arquitectura hasta
-            el deploy — y crecer junto a personas que también se exigen al máximo.
+            Join an ambitious product team where I can contribute from architecture
+            to deployment — and grow alongside people who also push their limits.
           </p>
         </div>
 
@@ -80,9 +83,12 @@
 <script setup lang="ts">
 import SectionHeader from '~/components/ui/SectionHeader.vue';
 import { usePortfolioData } from '~/composables/usePortfolioData';
+import { useScrollReveal } from '~/composables/useScrollReveal';
 
 const { getProfile } = usePortfolioData();
 const profile = getProfile();
+
+useScrollReveal();
 </script>
 
 <style scoped>
@@ -102,7 +108,7 @@ const profile = getProfile();
   font-weight: 600;
 }
 
-/* ── QUICK INFO: fila de datos ── */
+/* ── QUICK INFO ── */
 .about__quick-info {
   display: flex;
   flex-wrap: wrap;
@@ -214,16 +220,13 @@ const profile = getProfile();
   .about__quick-sep {
     display: none;
   }
-
   .about__quick-info {
     flex-direction: column;
   }
-
   .about__quick-item {
     border-bottom: 1px solid var(--color-border);
     min-width: unset;
   }
-
   .about__quick-item:last-child {
     border-bottom: none;
   }

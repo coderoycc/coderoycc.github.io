@@ -17,7 +17,7 @@
         :class="{ 'project-card__status--locked': locked }"
         v-if="status"
       >
-        <template v-if="locked">🔒 PRIVATE</template>
+        <template v-if="locked">[NDA / PROPRIETARY]</template>
         <template v-else>{{ status }}</template>
       </div>
     </header>
@@ -31,7 +31,7 @@
     </div>
 
     <div class="project-card__metric" v-if="metric">
-      <span class="metric-icon">⚡</span>
+      <span class="metric-icon">::</span>
       <span class="metric-text text-break">{{ metric }}</span>
     </div>
 

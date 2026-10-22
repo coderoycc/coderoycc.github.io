@@ -1,30 +1,30 @@
 <template>
   <section id="stack" class="tech-stack section-padding">
     <div class="container">
-      <SectionHeader number="02" title="Stack Técnico" />
+      <SectionHeader number="04" title="Tech Stack" />
 
-      <div class="tech-stack__intro">
+      <div class="tech-stack__intro reveal reveal--up">
         <p>
-          Las herramientas son el medio, no el fin. Mi experiencia se centra en arquitecturas
-          limpias y patrones escalables, permitiéndome adaptar rápidamente el stack a las
-          necesidades del negocio.
+          Tools are the means, not the end. My expertise focuses on clean architectures
+          and scalable patterns, allowing me to quickly adapt the stack to
+          the needs of the business.
         </p>
       </div>
 
       <div class="tech-stack__grid">
 
         <!-- Frontend -->
-        <div class="stack-col">
+        <div class="stack-col reveal reveal--up reveal--delay-1">
           <h3 class="stack-col__title">FRONTEND</h3>
           <ul class="stack-list">
-            <li 
-              v-for="(skill, index) in skills.frontend" 
-              :key="index" 
+            <li
+              v-for="(skill, index) in skills.frontend"
+              :key="index"
               class="stack-list__item"
             >
               <span class="stack-list__name">{{ skill.name.toUpperCase() }}</span>
-              <span 
-                class="stack-badge" 
+              <span
+                class="stack-badge"
                 :class="{ 'stack-badge--core': skill.level === 'CORE' }"
               >
                 {{ skill.level }}
@@ -34,17 +34,17 @@
         </div>
 
         <!-- Backend -->
-        <div class="stack-col">
+        <div class="stack-col reveal reveal--up reveal--delay-2">
           <h3 class="stack-col__title">BACKEND &amp; DATA</h3>
           <ul class="stack-list">
-            <li 
-              v-for="(skill, index) in skills.backend" 
-              :key="index" 
+            <li
+              v-for="(skill, index) in skills.backend"
+              :key="index"
               class="stack-list__item"
             >
               <span class="stack-list__name">{{ skill.name.toUpperCase() }}</span>
-              <span 
-                class="stack-badge" 
+              <span
+                class="stack-badge"
                 :class="{ 'stack-badge--core': skill.level === 'CORE' }"
               >
                 {{ skill.level }}
@@ -54,17 +54,17 @@
         </div>
 
         <!-- DevOps -->
-        <div class="stack-col">
+        <div class="stack-col reveal reveal--up reveal--delay-3">
           <h3 class="stack-col__title">DEVOPS &amp; CLOUD</h3>
           <ul class="stack-list">
-            <li 
-              v-for="(skill, index) in skills.devops" 
-              :key="index" 
+            <li
+              v-for="(skill, index) in skills.devops"
+              :key="index"
               class="stack-list__item"
             >
               <span class="stack-list__name">{{ skill.name.toUpperCase() }}</span>
-              <span 
-                class="stack-badge" 
+              <span
+                class="stack-badge"
                 :class="{ 'stack-badge--core': skill.level === 'CORE' }"
               >
                 {{ skill.level }}
@@ -81,9 +81,12 @@
 <script setup lang="ts">
 import SectionHeader from '~/components/ui/SectionHeader.vue';
 import { usePortfolioData } from '~/composables/usePortfolioData';
+import { useScrollReveal } from '~/composables/useScrollReveal';
 
 const { getSkills } = usePortfolioData();
 const skills = getSkills();
+
+useScrollReveal();
 </script>
 
 <style scoped>
@@ -107,19 +110,16 @@ const skills = getSkills();
   gap: var(--space-12);
 }
 
-/* Tablet (2 cols) */
 @media (min-width: 768px) and (max-width: 1023px) {
   .tech-stack__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-8);
   }
-  /* DevOps ocupa la fila completa en tablet 2 cols */
   .tech-stack__grid > :last-child {
     grid-column: 1 / -1;
   }
 }
 
-/* Desktop (3 cols) */
 @media (min-width: 1024px) {
   .tech-stack__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));

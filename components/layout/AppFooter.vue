@@ -20,7 +20,7 @@
 
         <!-- Derecha: links + copyright -->
         <div class="app-footer__right">
-          <nav class="app-footer__social" aria-label="Redes sociales">
+          <nav class="app-footer__social" aria-label="Social links">
             <a :href="profile.github"   target="_blank" rel="noopener noreferrer" class="social-link">
               <span aria-hidden="true">⌥</span> GitHub
             </a>
@@ -28,12 +28,12 @@
               <span aria-hidden="true">⌗</span> LinkedIn
             </a>
             <a href="#contacto" class="social-link">
-              <span aria-hidden="true">✉</span> Contacto
+              <span aria-hidden="true">✉</span> Contact
             </a>
           </nav>
 
           <p class="app-footer__copyright">
-            © {{ new Date().getFullYear() }} · Diseñado y construido con precisión técnica
+            &copy; {{ new Date().getFullYear() }} Roberto Carlos Chambi &middot; Built with Vue &amp; Nuxt
           </p>
         </div>
 

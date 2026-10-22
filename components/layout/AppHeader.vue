@@ -10,21 +10,21 @@
       </a>
 
       <!-- Navegación central -->
-      <nav class="app-header__nav" aria-label="Navegación principal">
+      <nav class="app-header__nav" aria-label="Main navigation">
+        <a href="#proyectos" class="app-header__link">Projects</a>
+        <a href="#experiencia" class="app-header__link">Experience</a>
         <a href="#stack" class="app-header__link">Stack</a>
-        <a href="#proyectos" class="app-header__link">Proyectos</a>
-        <a href="#sobre-mi" class="app-header__link">Sobre mí</a>
-        <a href="#contacto" class="app-header__link">Contacto</a>
+        <a href="#sobre-mi" class="app-header__link">About</a>
+        <a href="#contacto" class="app-header__link">Contact</a>
       </nav>
 
       <!-- Acción principal -->
       <div class="app-header__actions">
-        <!-- Indicador disponible (solo desktop) -->
-        <div class="app-header__status">
+        <!-- Indicador disponible (desktop) -->
+        <a href="#contacto" class="app-header__status" aria-label="Available for hire - Contact">
           <span class="status-dot status-dot--green"></span>
-          <span class="app-header__status-text">Disponible</span>
-        </div>
-        <!-- <BaseButton variant="secondary" href="/resume.pdf">Resume PDF</BaseButton> -->
+          <span class="app-header__status-text">Available</span>
+        </a>
       </div>
 
       <!-- Hamburger mobile -->
@@ -40,16 +40,16 @@
     <!-- Mobile menu drawer -->
     <Transition name="menu-slide">
       <div v-if="menuOpen" class="app-header__mobile-menu" role="navigation" aria-label="Menú móvil">
+        <a href="#proyectos" class="app-header__mobile-link" @click="menuOpen = false">Projects</a>
+        <a href="#experiencia" class="app-header__mobile-link" @click="menuOpen = false">Experience</a>
         <a href="#stack" class="app-header__mobile-link" @click="menuOpen = false">Stack</a>
-        <a href="#proyectos" class="app-header__mobile-link" @click="menuOpen = false">Proyectos</a>
-        <a href="#sobre-mi" class="app-header__mobile-link" @click="menuOpen = false">Sobre mí</a>
-        <a href="#contacto" class="app-header__mobile-link" @click="menuOpen = false">Contacto</a>
+        <a href="#sobre-mi" class="app-header__mobile-link" @click="menuOpen = false">About</a>
+        <a href="#contacto" class="app-header__mobile-link" @click="menuOpen = false">Contact</a>
         <div class="app-header__mobile-cta">
-          <div class="app-header__mobile-status">
+          <a href="#contacto" class="app-header__mobile-status-link" @click="menuOpen = false">
             <span class="status-dot status-dot--green"></span>
-            <span class="app-header__status-text">Disponible para nuevos proyectos</span>
-          </div>
-          <!-- <BaseButton variant="secondary" href="/resume.pdf">Resume PDF</BaseButton> -->
+            <span class="app-header__status-text">Available for remote work</span>
+          </a>
         </div>
       </div>
     </Transition>
@@ -145,6 +145,26 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
   color: var(--color-accent-green);
   text-transform: uppercase;
   letter-spacing: 0.1em;
+}
+
+.app-header__status {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.app-header__status:hover .app-header__status-text {
+  text-decoration: underline;
+}
+
+.app-header__mobile-status-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
 }
 
 /* ── HAMBURGER ── */

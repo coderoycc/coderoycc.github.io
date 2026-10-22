@@ -2,14 +2,17 @@
   <section id="contacto" class="contact section-padding">
     <div class="container contact__inner">
 
-      <!-- Header (usa SectionHeader global) -->
-      <SectionHeader number="04" title="Contacto" />
+      <SectionHeader number="06" title="Contact" />
 
       <!-- CTA Principal -->
-      <div class="contact__cta">
+      <div class="contact__cta reveal reveal--up">
         <h3 class="contact__headline">
           LET'S BUILD<br />SOMETHING.
         </h3>
+        <p class="contact__sub">
+          Open to full-time remote roles, freelance projects and technical collaborations.
+          I reply to every message.
+        </p>
 
         <a :href="'mailto:' + profile.email" class="contact__email-pill">
           <span class="status-dot status-dot--green"></span>
@@ -17,8 +20,24 @@
         </a>
       </div>
 
-      <!-- Redes sociales (usa .social-link global de main.css) -->
-      <nav class="contact__social" aria-label="Redes sociales">
+      <!-- Links rápidos de info remota -->
+      <div class="contact__remote-info reveal reveal--up reveal--delay-1">
+        <div class="contact__remote-item">
+          <span class="contact__remote-label">TIMEZONE</span>
+          <span class="contact__remote-value">{{ profile.timezone }} · Overlap with US/EU teams ✓</span>
+        </div>
+        <div class="contact__remote-item">
+          <span class="contact__remote-label">ENGLISH</span>
+          <span class="contact__remote-value">Technical proficiency (B1/B2) — reading, writing & async comms</span>
+        </div>
+        <div class="contact__remote-item">
+          <span class="contact__remote-label">AVAILABILITY</span>
+          <span class="contact__remote-value">{{ profile.availability }} — immediate start</span>
+        </div>
+      </div>
+
+      <!-- Redes sociales -->
+      <nav class="contact__social reveal reveal--up reveal--delay-2" aria-label="Social links">
         <a :href="profile.github" target="_blank" rel="noopener noreferrer" class="contact__social-item">
           <span class="contact__dash" aria-hidden="true">—</span> GITHUB
         </a>
@@ -34,9 +53,12 @@
 <script setup lang="ts">
 import SectionHeader from '~/components/ui/SectionHeader.vue';
 import { usePortfolioData } from '~/composables/usePortfolioData';
+import { useScrollReveal } from '~/composables/useScrollReveal';
 
 const { getProfile } = usePortfolioData();
 const profile = getProfile();
+
+useScrollReveal();
 </script>
 
 <style scoped>
@@ -51,8 +73,8 @@ const profile = getProfile();
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-8);
-  margin-bottom: var(--space-16);
+  gap: var(--space-6);
+  margin-bottom: var(--space-10);
   text-align: center;
   width: 100%;
 }
@@ -67,6 +89,15 @@ const profile = getProfile();
   letter-spacing: -0.01em;
 }
 
+.contact__sub {
+  font-family: var(--font-family-mono);
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 500px;
+  letter-spacing: 0.02em;
+}
+
 /* ── EMAIL PILL ── */
 .contact__email-pill {
   display: inline-flex;
@@ -75,7 +106,7 @@ const profile = getProfile();
   font-family: var(--font-family-mono);
   font-size: clamp(var(--text-md), 2vw, var(--text-xl));
   color: var(--color-accent-blue);
-  padding: var(--space-lg, 14px) var(--space-8);
+  padding: 14px var(--space-8);
   border: 1px solid var(--color-accent-blue);
   border-radius: var(--radius-full);
   background-color: var(--color-accent-blue-05);
@@ -84,16 +115,52 @@ const profile = getProfile();
   word-break: break-all;
 }
 
-.contact__email-icon {
-  font-size: 1.2em;
-  flex-shrink: 0;
-}
-
 .contact__email-pill:hover {
   background-color: var(--color-accent-blue);
   color: #000;
   box-shadow: var(--shadow-glow-blue);
   transform: translateY(-2px);
+}
+
+/* ── REMOTE INFO ── */
+.contact__remote-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 640px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-level1);
+  overflow: hidden;
+  margin-bottom: var(--space-12);
+}
+
+.contact__remote-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.contact__remote-item:last-child {
+  border-bottom: none;
+}
+
+.contact__remote-label {
+  font-family: var(--font-family-mono);
+  font-size: var(--text-xs);
+  color: var(--color-accent-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.contact__remote-value {
+  font-family: var(--font-family-mono);
+  font-size: var(--text-md);
+  color: var(--color-text-primary);
+  letter-spacing: 0.02em;
 }
 
 /* ── SOCIAL LINKS ── */
@@ -133,8 +200,11 @@ const profile = getProfile();
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .contact__cta {
-    gap: var(--space-6);
-    margin-bottom: var(--space-10);
+    gap: var(--space-5);
+    margin-bottom: var(--space-8);
+  }
+  .contact__remote-info {
+    max-width: 100%;
   }
 }
 
